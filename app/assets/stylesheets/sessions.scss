@@ -1,0 +1,32 @@
+.sign_in{
+
+	.header {
+		text-align:center;
+		padding-top:40px;
+		padding-bottom: 30px;
+		font-size: 30px;
+	}
+	.sign-in-form {
+		border: 2px solid gray;
+		padding-bottom:20px;
+
+	}
+	
+	.center{
+		text-align:center;
+		padding: 20px 0 20px 0;
+	}
+		}
+@media (max-width: 1000px) {
+	.sign_in{
+		}
+		.header{
+			padding-top: 20px;
+			padding-bottom: 15px;
+			font-size: 15px;
+		.sign-in-form{
+			padding-bottom: 10px;
+			border: 0px solid gray;	
+		}
+	}
+}
