@@ -1,6 +1,6 @@
-<%= render 'layouts/header'%>
-<%  if @user.nil? %>
+
+<%  if @account.nil? %>
 	<p>Khoong cos cc gif de show</p>
 <%else%>
-<%=  @user.try(:last_name) %>
+<%=  @account.try(:last_name) %>
 <% end -%>

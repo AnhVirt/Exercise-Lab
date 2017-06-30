@@ -7,9 +7,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    
-          
-    @accounts = Account.all
+    @account= Account.all
   end
 
   def edit
@@ -18,7 +16,7 @@ class UsersController < ApplicationController
   def destroy
   end
   def show
-    @user = Account.find(params[:id])
+   @account=current_account
   end
 
   def create

@@ -1,0 +1,47 @@
+// Place all the styles related to the Article controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.media{
+	overflow: visible !important ;
+}
+.post-form{
+
+		.post-header{
+			
+			font-size: 25px;
+			border-bottom: 1px solid #3399FF;
+			.form-horizontal{
+				#datepost{
+				font-size: 13px; 
+				font-weight: lighter; 
+				color:#888888; 
+				}
+			}
+				.post-header-left{
+					text-align: left;
+				}
+				.post-header-right{
+					
+					text-align: right;
+					
+				}		
+		}
+		.post-body{
+			font-size: 15px;
+			padding-top: 20px;
+			border-bottom: 1px solid #3399FF;
+			padding-bottom: 40px;
+		}
+		.post-footer{
+			font-size:  15px;
+			text-align: right;
+			padding-right: 30px;
+		}
+}
+.form-header{
+		.form-group{
+			p{
+			text-align:right;
+			}
+	}
+}

@@ -1,55 +1,24 @@
 
-
-
-<%= render 'layouts/header'%>
-
-
-
 <div class="container">
-	<div class="row edit-form">
-	
-	
-	<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Danh sach Users</div>
-
-  <!-- Table -->
-  <table class="table">
+  <h2>Hover Rows</h2>
+  <p>The .table-hover class enables a hover state on table rows:</p>            
+  <table class="table table-hover">
     <thead>
-			<tr>
-				<th>id</th>
-				<th>first_name</th>
-				<th>last_name</th>
-				<th>email</th>
-			</tr>
-		</thead>	
-		<tbody>
-	
-
-	<% @accounts.each do |account| %>
-			<tr>
-							
-					
-					<th><%= account.id%>  </th>
-					<th><%= account.first_name%> </th>
-					<th><%= account.last_name%> </th>
-					<th><%= account.email%> </th>
-
-					<th><button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Edit</button></th>
-					<th><button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#demo">Delete</button></th>
-			</tr>
-			<%end%>	
-			<tr>
-			<th>	
-			<div  id="demo" class="collapse">
-				
-			</div>
-			
-			</th>
-			</tr>
-	
-			
-		</tbody>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+<% @account.each do |acc| %>
+      <tr>
+        <td><%= link_to "#{acc.first_name}",  user_path(acc) %></td>
+        <td><%=acc.last_name%></td>
+        <td><%=acc.email%></td>
+      </tr>
+      
+<%end %>
+    </tbody>
   </table>
-	</div>
-
+</div>

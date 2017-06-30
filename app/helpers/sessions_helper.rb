@@ -11,7 +11,7 @@ module SessionsHelper
 	def admin?
 		if logged_in?
 
-			current_account == Account.find(id:9)
+			@current_account == Account.find(id:9)
 		else
 			false
 		end	
