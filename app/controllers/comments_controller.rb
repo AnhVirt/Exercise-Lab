@@ -17,12 +17,18 @@ class CommentsController < ApplicationController
 	def show
 	end
 	def update
+		@comment=Comment.find(params[:id])
+ if @comment.update(params.require(:comment).permit(:content))
+			redirect_to article_path(id:@comment.article_id)
+		else 
+			render :edit
+		end
 	end
 	def edit
-
+			@article = Article.find(params[:article_id])
+			@comment=Comment.find(params[:id])
 	end
 	def destroy
-		asdas
 		Comment.all.find(params[:id]).delete
 		redirect_to :back
 		
@@ -34,7 +40,7 @@ class CommentsController < ApplicationController
 		pa=params.require(:comment).permit(:content)	
 		pa[:article_id]= params[:article_id]
 	
-		pa[:account_id]= Article.find(params[:article_id]).account.id
+		pa[:account_id]= current_account.id
 		return pa
 			end
 

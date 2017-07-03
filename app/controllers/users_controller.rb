@@ -19,6 +19,27 @@ class UsersController < ApplicationController
    @account=current_account
   end
 
+  def upload_avatar
+    @account= Account.find(params[:id])
+    if @account.update_attribute(:avatar,params[:account][:avatar])
+      
+      redirect_to :back
+    else 
+      
+      redirect_to :back
+    end
+  end
+
+  def update
+    @account= Account.find(params[:id])
+    if @account.update(account_params)
+        
+        redirect_to user_path(id:@account.id)
+      else
+        render :show
+    end
+  end
+
   def create
   	@account = Account.new(account_params)
   	if @account.save
@@ -32,5 +53,6 @@ class UsersController < ApplicationController
   def account_params
   	params.require(:account).permit(:first_name,:last_name, :email ,:password)
   end
+
  
 end

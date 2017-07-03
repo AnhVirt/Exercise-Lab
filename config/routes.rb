@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'photo/title'
+
+  get 'photos/title'
+
 # HOMEPAGE
  
   post 'index' , to: 'homes#create'
@@ -18,12 +22,15 @@ Rails.application.routes.draw do
   get   'sign_in',   to: 'sessions#new'
   post  'sign_in', to: 'sessions#create'
   delete 'sign_out', to: 'sessions#destroy'
-  
+  patch 'users/:id/upload_avatar', to: "users#upload_avatar", as: "users/upload_avatar"
 
   root 'homes#index'
 
   
-  resources :users 	
+  resources :users do
+    resources :photos, only: [:new, :create, :index, :destroy]
+  end
+  	
   resources :articles do
     resources :comments 
   end

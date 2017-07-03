@@ -4,3 +4,11 @@
 <%else%>
 <%=  @account.try(:last_name) %>
 <% end -%>
+
+<%= image_tag @account.avatar.url %>
+
+<%= image_tag @account.avatar.url(:medium) %>
+<%= simple_form_for @account, url: users_upload_avatar_path(id:@account.id) do |form| %>
+  <%= form.input :avatar, as: :file %>
+	<%= form.submit "Upload"%>
+<% end %>

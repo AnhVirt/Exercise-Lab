@@ -1,0 +1,4 @@
+<%= simple_form_for [@article,@comment] do |comment|%>
+<%= comment.input :content, input_html: { minlength: 1 }%>
+<%= comment.button :submit ,"Chinh sua"%>
+<%end%>

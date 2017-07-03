@@ -1,27 +1,27 @@
 <div class="container">
-<form class="post-form col-md-8 col-md-offset-2">
-				<div class="post-header">
-						<div class="form-horizontal">
-						<div class="post-header-left">
-							<%=link_to "#{ @article.account.first_name}", users_path(account_id:@article.account_id) %>
-							<p id="datepost">Post on <%= @article.created_at %></p>
-							<p style="right"></p>
-						</div>
-						<div class=" post-header-right">
-						
-						</div>
+	<div class="post-form col-md-8 col-md-offset-2">
+		<div class="post-header">
+			<div class="form-horizontal">
+				<div class="post-header-left">
+					<%=link_to "#{ @article.account.first_name}", users_path(account_id:@article.account_id) %>
+					<p id="datepost">Post on <%= @article.created_at%></p>
+					<p style="right"></p>
 				</div>
+				<div class=" post-header-right">
+			
 				</div>
-					<div class="post-body"> 
-				 <%= form_for @article do |f| %>
-    			  <%= f.text_area :content ,class:"form-control input-lg",style:'border:none; min-width: 100%;' %>
-						</div>
-					<div class="post-footer">
-					<div class="btn-group">
-				 <%= link_to 'Comments',url: article_path(id: @article.id)	 %>
- 					<%= f.submit "Save changes", class: "btn btn-primary", style:"text-align:center;" %>
-    						<% end %>
-					</div>
-					</div>
-			</form>
+			</div>
+		</div>
+	<div class="post-body"> 
+	 	<%= form_for @article do |f| %>
+	 		<%= f.text_area :content ,class:"form-control input-lg",style:'border:none; min-width: 100%;' %>
+			<div class="post-footer">
+				<div class="btn-group">
+					<%= f.submit "Save changes", class: "btn btn-primary", style:"text-align:center;" %>
+				<% end %>
+			</div>
+	 		</div>
+	<%= link_to 'Comments',article_path(id: @article.id)	 %>
+		</div>
+	</div>
 </div>

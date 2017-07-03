@@ -9,21 +9,25 @@ class ArticlesController < ApplicationController
     @comments = @article.comments
     @newcomment = Comment.new
 
-   
-    
-    
   end
   def edit
+
       @article=Article.find(params[:id])
-      if @article.save
-        redirect_to :back
-      else redirect_to :back
-      end 
+        
 
     
   end
+
   def update
-  
+     @article=Article.find(params[:id])
+    
+      if @article.update(params.require(:article).permit(:content))
+      
+          redirect_to article_path(id:@article.id)
+        else
+          render :edit
+      end
+
   end
 
   def index
