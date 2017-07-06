@@ -4,9 +4,12 @@
 .media{
 	overflow: visible !important ;
 }
-.post-form{
-		
 
+.post-form{
+		background: white;
+		box-shadow: 3px 3px 5px #CCCCCC;
+		border: 1px solid #CCCCCC;
+		margin-bottom: 15px;
 		.post-header{
 			
 			font-size: 25px;
@@ -39,10 +42,14 @@
 			padding-right: 30px;
 		}
 }
-.form-header{
+
 		.form-group{
+			padding-left: 30px;
+			padding-right: 0px;
 			p{
 			text-align:right;
+			margin-top: -50px;
+			padding-bottom: 30px;
 			}
-	}
+	
 }

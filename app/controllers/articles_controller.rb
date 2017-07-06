@@ -22,10 +22,10 @@ class ArticlesController < ApplicationController
       
       @article.account=current_account
       if @article.save
-       
+          if params[:article][:images]
            params[:article][:images].each do |img|
           @article.photos.create(:image=>img)
-          
+          end
         
           end
           

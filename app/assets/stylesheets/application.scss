@@ -3,9 +3,14 @@
 @import "users.scss";
 @import "sessions.scss";
 @import "article.scss";
+@import "home.scss";
 .header{
 	height:90px;
 }
 ul {
 	list-style-type:none;	
+}
+
+body{
+	background-color:#EEEEEE;
 }

@@ -1,0 +1,42 @@
+<ul>
+		<% @articles.reverse.each do |f| %>
+
+			<li>
+			<form class="post-form col-md-10 col-md-offset-1 card">
+				<div class="post-header">
+						<div class="form-horizontal">
+						<div class="post-header-left">
+							<%=link_to "#{ account_id f.account_id}", user_path(id:f.account.id) %>
+							<p id="datepost">Post on <%= f.created_at %></p>
+							<p style="right"></p>
+						</div>
+						<div class=" post-header-right">
+						<div class="btn-group">
+  						<button class="btn btn-default btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    					Small button <span class="caret"></span>
+ 						 </button>
+  					<ul class="dropdown-menu">
+  					<li>
+  				<%= link_to "Edit" , edit_article_path(id:f.id)%></li>
+   				<li> <%=link_to "Delete", article_path(id:f.id), method: :delete, data: {confirm: "Are u sure?"}%></li>
+  				</ul>
+					</div>
+						</div>
+						</div>
+				</div>
+					<div class="post-body"> 
+				
+						<%= f.content %>
+						<br>
+						<% f.photos.each do |photo|%>
+						<%= image_tag("/images/#{photo.id}/#{photo.image_file_name}", width:300)	%>
+						<%end%>
+						</div>
+					<div class="post-footer">
+				  	<p> <span class="label label-info"><%= f.comments.count %>
+											</span><%= link_to 'Comments', article_path(id:f.id) %></p>
+					</div>
+			</form>
+			</li>
+		<% end %>	
+		</ul>

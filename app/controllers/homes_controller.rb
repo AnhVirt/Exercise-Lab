@@ -4,6 +4,9 @@ class HomesController < ApplicationController
   	
   		@article= Article.new
   		@articles=Article.all
+  		if logged_in?
+  			@profile= current_account
+  		end
   	end
   	
   	

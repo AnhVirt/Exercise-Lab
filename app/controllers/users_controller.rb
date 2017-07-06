@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+  before_action :profile
   def sign_up
     
   	@account=Account.new
@@ -16,7 +18,9 @@ class UsersController < ApplicationController
   def destroy
   end
   def show
-   @account=current_account
+
+    @articles= @profile.articles
+    
   end
 
   def upload_avatar
@@ -52,6 +56,14 @@ class UsersController < ApplicationController
   end
   def account_params
   	params.require(:account).permit(:first_name,:last_name, :email ,:password)
+  end
+
+
+
+
+  private
+  def profile
+    @profile=Account.find(params[:id])
   end
 
  

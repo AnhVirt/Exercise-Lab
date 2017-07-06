@@ -1,0 +1,23 @@
+	<div class="col-md-10 col-md-offset-1 form-group">
+			
+				
+				<% if logged_in? %>
+				<%= current_account.first_name %>
+				
+					<%= form_for @article ,url:articles_path, method: :post,:html => { :class => 'form-horizontal', multipart: true }  do |f| %>
+			 	 	<%=f.label :content  %>
+			  		<%= f.text_area  :content ,class:"form-control", :rows=>"5" %>
+
+      			<%= f.fields_for  :pictures do |builder| %>
+
+   					<%= f.label  :pictures, :class => 'control-label' %>
+						
+   					<%= f.file_field  :images, multiple: true %>
+   					<%end%>
+			  		<p ><%= f.submit " Dang bai viet", class:'btn btn-default' %></p>
+
+					<% end %>		
+				
+			
+				<%end%>		
+			</div>

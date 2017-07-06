@@ -12,8 +12,14 @@ class Account < ApplicationRecord
 	validates_with AttachmentPresenceValidator, attributes: :avatar
 	validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 1.megabytes
 	validates_attachment :avatar
-	has_attached_file :avatar, styles: { medium: "3000x3000>", thumb: "1000x1000>" }, default_url: "/images/:style/missing.png"
-	has_many :gallaries,:dependent => :destroy
+	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/missing.jpg"
+	validates :wallpaper, attachment_presence: true
+	
+	validates_with AttachmentPresenceValidator, attributes: :wallpaper
+	validates_with AttachmentSizeValidator, attributes: :wallpaper, less_than: 1.megabytes
+	validates_attachment :wallpaper
+	has_attached_file :wallpaper, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/missing.jpg"
+
 	has_many :articles,:dependent => :destroy
 	has_many :comments,:dependent => :destroy
 	has_secure_password

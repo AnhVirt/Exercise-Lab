@@ -1,23 +1,2 @@
-
-<%  if @account.nil? %>
-	<p>Khoong cos cc gif de show</p>
-<%else%>
-<%=  @account.try(:last_name) %>
-<% end -%>
-
-
-
-<%= form_for :@article do |f| %>
-<%= f.label :content %>
-<%= f.text_field :content %>
-
-  <%= f.fields_for :photos do |builder| %>
-
-   <%= f.label :photos, :class => 'control-label' %>
-
-   <%= file_field_tag "images[]", type: :file, multiple: true %>
- 
-
-<%end%>
-<%= f.submit "Upload"  ,class:"btn btn-default"%>
-<%end%>
+<%= render 'layouts/profilecard'%>
+<%=render 'layouts/showarticles'%>

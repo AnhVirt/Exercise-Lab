@@ -8,12 +8,5 @@ module SessionsHelper
  	 def logged_in?
   	!current_account.nil?
 	end
-	def admin?
-		if logged_in?
-
-			@current_account == Account.find(id:9)
-		else
-			false
-		end	
-	end
+	
 end
