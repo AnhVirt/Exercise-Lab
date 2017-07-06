@@ -7,7 +7,12 @@ class CommentsController < ApplicationController
 
 		@newcomment = Comment.new(params_comment)
 		if @newcomment.save
+			if params[:comment][:photo]
 
+				@newcomment.create_photo(:image=>params[:comment][:photo])
+
+			end
+			
 			redirect_to :back
 		else
 			redirect_to :back
@@ -41,6 +46,7 @@ class CommentsController < ApplicationController
 		pa[:article_id]= params[:article_id]
 	
 		pa[:account_id]= current_account.id
+
 		return pa
 			end
 

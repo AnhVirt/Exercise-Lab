@@ -1,94 +1,116 @@
 
 
 <div class="container">
-  <div class="comment">
-      	
-     <div class="media-body">
-          <h4 class="media-heading"><%= link_to "#{@account.first_name+" " + @account.last_name}",user_path(id:@account.id)%> <small><i>Posted on
-               <%= @article.created_at %> 
-                  </i></small></h4> 
-          <p><%= @article.content %></p>
-        <% if logged_in?%>
-          <button data-toggle="collapse" data-target="#demo" class='btn btn-default'>Comment</button>
-    
-      		<div id="demo" class="collapse">
-           <div class="media">
-           		<div class="media-body">
-				           <%= form_for @newcomment , url: article_comments_path(article_id: @article.id) do |f| %>
-				          <div class="form-group">
-				         <label for="comment" >Comment:</label>
-				          <%= f.text_area  :content , class:"form-control", :rows=>"3"%>
-				          <%= f.submit class:'btn btn-default'%>
-				          </div>
-				           <% end %>
-      
-          		 </div>
-           </div>
-        
-      		</div>
-     		<%end%>
-   </div>  	
-   </div>	
-      <!-- Nested media object -->
+ <div class="comment">
 
-      <% @comments.reverse.each do |comment| %>
-      <div class="comments">
-        <div class="comments-body">
-          <h4 class="comments-heading"><%= link_to "#{comment.account.first_name+ " "+ comment.account.last_name }",user_path(id:comment.account.id)%> </h4>
-           	<small><i><%= "Post on #{comment.created_at} "%></i></small>
-           			<% if logged_in?%>
+  <div class="media-body">
+    <h4 class="media-heading"><%= link_to "#{@account.first_name+" " + @account.last_name}",user_path(id:@account.id)%> <small><i>Posted on
+    <%= @article.created_at %> 
+    </i></small></h4> 
+    <p><%= @article.content %></p>
+    <% if logged_in?%>
+      <button data-toggle="collapse" data-target="#demo" class='btn btn-default'>Comment
+      </button>
 
-											<% if current_account.id == @article.account.id && current_account.id == comment.account.id%>
-											   <div class="btn-group">
-           							 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-           							 <span class="glyphicon glyphicon-align-justify"></span> <span class="caret"></span>
-          						 </button>
-         							 <ul class="dropdown-menu">
-              					<li><%=link_to "Edit",edit_article_comment_path(article_id: @article.id , id: comment.id) %></li>
-              					<li><%=link_to "Delete",article_comment_path(article_id: @article.id, id: comment.id), method: :delete, data: {confirm: "Are u sure?"} %></li>
-          
-          								</ul>
-          								</div>
-											<%end%>
-										<%else	%>
-												<%if  current_account.id==@article.account.id%>
+      <div id="demo" class="collapse">
+       <div class="media">
+        <div class="media-body">
+          <%= form_for @newcomment , url: article_comments_path(article_id: @article.id) do |f| %>
+            <div class="form-group">
+              <label for="comment" >Comment:</label>
+              <%= f.text_area  :content , class:"form-control", :rows=>"3"%>
+              <%= f.file_field :photo %>
+              <%= f.submit class:'btn btn-default'%>
+            </div>
+          <% end %>
 
-														   <div class="btn-group">
-         								   <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            							<span class="glyphicon glyphicon-align-justify"></span> <span class="caret"></span>
-          								</button>
-          								<ul class="dropdown-menu">
-             
-              						<li><%=link_to "Delete",article_comment_path(article_id: @article.id, id: comment.id), method: :delete, data: {confirm: "Are u sure?"} %></li>
-          
-         									 </ul>
-         								 </div>
-
-         									<%else%>
-									         									<% if  current_account.id==comment.account.id%>
-																							<div class="btn-group">
-													           							 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-																			            <span class="glyphicon glyphicon-align-justify"></span> <span class="caret"></span>
-																			           </button>
-																			          <ul class="dropdown-menu">
-																			              <li><%=link_to "Edit",edit_article_comment_path(article_id: @article.id , id: comment.id) %></li>
-																			              <li><%=link_to "Delete",article_comment_path(article_id: @article.id, id: comment.id), method: :delete, data: {confirm: "Are u sure?"} %></li>
-																			          
-																			          </ul>
-																			          </div>    
-																			               								
-									           								<% end%>
-													<%end%>
-											<%end%>
-								
-
-          <p><%=comment.content%></p>
-		    </div>
+        </div>
       </div>
+
+     </div>
+    <%end%>
+  </div>  	
+ </div>	
+<!-- Nested media object -->
+
+  <% @comments.reverse.each do |comment| %>
+  <div class="comments">
+    <div class="comments-body">
+       <h4 class="comments-heading"><%= link_to "#{comment.account.first_name+ " "+ comment.account.last_name }",user_path(id:comment.account.id)%> </h4>
+        <small><i><%= "Post on #{comment.created_at} "%></i></small>
+      <% if logged_in?%>
+
+        <% if current_account.id == @article.account.id && current_account.id == comment.account.id%>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-align-justify"></span> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><%=link_to "Edit",edit_article_comment_path(article_id: @article.id , id: comment.id) %>
+                
+              </li>
+              <li><%=link_to "Delete",article_comment_path(article_id: @article.id, id: comment.id), method: :delete, data: {confirm: "Are u sure?"} %>
+                
+              </li>
+
+            </ul>
+          </div>
+          
+          <%else	%>
+            <%if  current_account.id==@article.account.id%>
+
+            <div class="btn-group">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="glyphicon glyphicon-align-justify"></span> 
+              <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+
+              <li><%=link_to "Delete",article_comment_path(article_id: @article.id, id: comment.id), method: :delete, data: {confirm: "Are u sure?"} %>
+                
+              </li>
+
+              </ul>
+            </div>
+
+            <%else%>
+              <% if  current_account.id==comment.account.id%>
+              <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="glyphicon glyphicon-align-justify"></span> 
+                <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><%=link_to "Edit",edit_article_comment_path(article_id: @article.id , 
+                  id: comment.id) %>
+  
+                  </li>
+                  <li><%=link_to "Delete",article_comment_path(article_id: @article.id, id: comment.id), method: :delete, data: {confirm: "Are u sure?"} %>
+                    
+                  </li>
+
+                </ul>
+              </div>    
+ 								
+              <% end%>  
+            <%end%>
+        
+
+
+        <%end%>
       <%end%>
-
-
-
+  <p><%=comment.content%></p>
+  <%if !comment.photo.nil?%>
+  <%=  image_tag("/images/#{comment.photo.id}/#{comment.photo.image_file_name}", width:300)  %>
+  <%else%>
+  Ko co hinh
+  <%end %>
     </div>
   </div>
+  <br style="padding-bottom: 20px;">
+
+<% end %>
+
+</div>
+</div>
 </div>

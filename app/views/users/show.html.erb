@@ -5,10 +5,19 @@
 <%=  @account.try(:last_name) %>
 <% end -%>
 
-<%= image_tag @account.avatar.url %>
 
-<%= image_tag @account.avatar.url(:medium) %>
-<%= simple_form_for @account, url: users_upload_avatar_path(id:@account.id) do |form| %>
-  <%= form.input :avatar, as: :file %>
-	<%= form.submit "Upload"%>
-<% end %>
+
+<%= form_for :@article do |f| %>
+<%= f.label :content %>
+<%= f.text_field :content %>
+
+  <%= f.fields_for :photos do |builder| %>
+
+   <%= f.label :photos, :class => 'control-label' %>
+
+   <%= file_field_tag "images[]", type: :file, multiple: true %>
+ 
+
+<%end%>
+<%= f.submit "Upload"  ,class:"btn btn-default"%>
+<%end%>
