@@ -8,6 +8,10 @@
     <%= @article.created_at %> 
     </i></small></h4> 
     <p><%= @article.content %></p>
+    <%@article.photos.each do |f|%>
+   <%= image_tag("/images/#{f.id}/#{f.image_file_name}", width:300) %>
+    <%end%>
+    <br>
     <% if logged_in?%>
       <button data-toggle="collapse" data-target="#demo" class='btn btn-default'>Comment
       </button>
