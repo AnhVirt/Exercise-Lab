@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :profile
+  before_action :profile, only: [:show]
   def sign_up
     
   	@account=Account.new
@@ -8,9 +8,7 @@ class UsersController < ApplicationController
   	
   end
 
-  def index
-    @account= Account.all
-  end
+ 
 
   def edit
       @account=Account.find( params[:id])  

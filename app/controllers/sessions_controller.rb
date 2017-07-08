@@ -12,11 +12,11 @@ class SessionsController < ApplicationController
 		
 				account= Account.find_by(email: params[:session][:email].downcase)
 				if account && account.authenticate(params[:session][:password])
-					flash[:success]="thanh cong"
+					
 					log_in(account) 
 					redirect_to root_path
 					else
-						flash[:danger] = 'Invalid email/password combination'
+						
 						redirect_to sign_in_path
 					end
 		
