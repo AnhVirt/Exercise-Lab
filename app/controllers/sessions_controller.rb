@@ -14,19 +14,20 @@ class SessionsController < ApplicationController
 				if account && account.authenticate(params[:session][:password])
 					
 					log_in(account) 
+
+					params[:session][:remember_me]== '1' ? remember(account): forget(account)
+
 					redirect_to root_path
 					else
 						
 						redirect_to sign_in_path
 					end
-		
+				
 	end
 	def destroy
-		@current_account=nil
-		session.delete(:account_id)
+		log_out
 		redirect_to root_path
 	end
 
 	
-	
-end
+	end

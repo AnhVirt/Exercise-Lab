@@ -1,5 +1,15 @@
-<div class="wrapper">
-		
+<div class="container wrapper">
+		<div class="row">
+			<%=form_for :account, url:users_upload_avatar_path(@profile), method: :patch do |f|%>
+			<%= f.file_field	:avatar %>
+			<%= f.submit :avatar	%>
+			<%end%>
+
+			<%=form_for :account,url:users_upload_wallpaper_path(@profile), method: :patch do |f|%>
+			<%=f.file_field :wallpaper %>
+			<%= f.submit :wallpaper %>
+			<%end %>
+		</div>
 		<div class="row">
 
 		<div class="col-md-2 col-md-offset-0 col-xs-12 col-sm-4 col-sm-offset-4 ">

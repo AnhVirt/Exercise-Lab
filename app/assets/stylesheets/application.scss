@@ -4,14 +4,28 @@
 @import "sessions.scss";
 @import "article.scss";
 @import "home.scss";
+@import "comment.scss";
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
+
+body{
+	font-family: 'Roboto Slab', serif;
+}
 nav.header{
-	
-	background-color: black;
+	border-bottom: 1px solid #BBBBBB;
+	background-color: white;
 	font-size: 18px;
+	opacity: 0.7;	
+	a{
+		font-weight:lighter ;
+		color: black;
+
+	}
+	
+	}
 		
 
 	
-}
+
 ul {
 	list-style-type:none;	
 }

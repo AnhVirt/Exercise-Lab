@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   
-  get 'photo/title'
-
-  get 'photos/title'
+  
 
 # HOMEPAGE
  
@@ -23,12 +21,12 @@ Rails.application.routes.draw do
   post  'sign_in', to: 'sessions#create'
   delete 'sign_out', to: 'sessions#destroy'
   patch 'users/:id/upload_avatar', to: "users#upload_avatar", as: "users/upload_avatar"
-
+  patch 'users/:id/upload_wallpaper', to: "users#upload_wallpaper", as: "users/upload_wallpaper"
   root 'homes#index'
 
   
   resources :users do
-    resources :photos, only: [:new, :create, :index, :destroy]
+    resources :photos, only: [:new, :create, :show, :destroy]
     resources :relationships, only: [:show,:create,:destroy]	
   end
   resources :articles do

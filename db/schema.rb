@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707071538) do
+ActiveRecord::Schema.define(version: 20170709152848) do
 
   create_table "accounts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "first_name"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170707071538) do
     t.string   "wallpaper_content_type"
     t.integer  "wallpaper_file_size"
     t.datetime "wallpaper_updated_at"
+    t.string   "remember_digest"
   end
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -1,11 +1,11 @@
-<%if logged_in?%>
+
 <div class="card">
     <div class="card-wall">
-        <img src=<%="#{@profile.avatar.url}"%>  class="wallpaper">
+        <img src=<%="#{@profile.wallpaper.url}"%>  class="wallpaper">
     </div>
     <div class="card-header">
         <%=image_tag(@profile.avatar.url,class:"avatar")%>
-        <h1><%="#{@profile.first_name+@profile.last_name}"%></h1>
+        <h3><%="#{@profile.first_name+@profile.last_name}"%></h3>
         <p class="title"><%="#{@profile.first_name+@profile.last_name}"%></p>
         <p>Harvard University</p>
         <a href="#"><i class="fa fa-dribbble"></i></a> 
@@ -19,4 +19,4 @@
     </div>
   </div>
 </div>
-<%end%>
+    

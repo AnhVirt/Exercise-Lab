@@ -31,7 +31,15 @@ class UsersController < ApplicationController
       redirect_to :back
     end
   end
-
+  def upload_wallpaper
+    @account=Account.find(params[:id])
+  
+    if @account.update_attribute(:wallpaper,params[:account][:wallpaper])
+      redirect_to :back
+    else 
+      redirect_to :back
+    end
+  end
   def update
     @account= Account.find(params[:id])
     if @account.update(account_params)
@@ -44,16 +52,21 @@ class UsersController < ApplicationController
 
   def create
   	@account = Account.new(account_params)
-  	if @account.save
-      flash[:success]="thanh cong"
-  		redirect_to :sign_in
-  	else
-      flash[:danger] = 'Invalid email/password combination'
+   if @account.password==@account.password_comfirmation
+      if @account.save
+	     redirect_to :sign_in
+      else
+
+        render 'sign_up'
+      end
+    else
+      @account.errors[:Repassword]=" is not same"
       render 'sign_up'
-  	end
+   end
+
   end
   def account_params
-  	params.require(:account).permit(:first_name,:last_name, :email ,:password)
+  	params.require(:account).permit(:first_name,:last_name, :email ,:password,:password_comfirmation)
   end
 
 

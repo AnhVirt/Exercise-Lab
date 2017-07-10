@@ -1,3 +1,4 @@
+<%= provide(:title,"Sign in")%>
 <div class="container sign_in">
 	<div class="row">
 		<div class="header">
@@ -17,8 +18,10 @@
 		<%= f.label :password  %>
 		<%= f.text_field :password,class:'form-control' ,type: "password"%>
 		</div>
-			<div class="center">
+		<%=f.check_box :remember_me%>
+					<div class="center">
 		<%= f.submit 'Sign in', class:'btn btn-primary' %>
+
 		<p>Don`t have  account <%= link_to 'Sign up',sign_up_path %></p>
 			</div>
 		</div>
