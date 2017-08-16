@@ -4,4 +4,5 @@ class Article < ApplicationRecord
 	belongs_to :account
 	has_many :comments, :dependent => :destroy
 	has_many :photos ,:dependent => :destroy ,:as=>:phototable
+	default_scope -> {order(id: :desc)}
 end

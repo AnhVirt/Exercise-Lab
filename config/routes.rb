@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
   
-  
-
-# HOMEPAGE
- 
-  post 'index' , to: 'homes#create'
-  get 'index', to: 'homes#index' 
-
-
 #SIGN UP UsersController
   get 'sign_up', to:'users#sign_up'
   post 'sign_up', to: 'users#create'
@@ -22,12 +14,15 @@ Rails.application.routes.draw do
   delete 'sign_out', to: 'sessions#destroy'
   patch 'users/:id/upload_avatar', to: "users#upload_avatar", as: "users/upload_avatar"
   patch 'users/:id/upload_wallpaper', to: "users#upload_wallpaper", as: "users/upload_wallpaper"
-  root 'homes#index'
+  root 'articles#index'
 
-  
+  resources :friendships,only:[:create,:update,:destroy]
   resources :users do
+    member do 
+      get :friends
+    end
     resources :photos, only: [:new, :create, :show, :destroy]
-    resources :relationships, only: [:show,:create,:destroy]	
+ 
   end
   resources :articles do
     resources :comments 

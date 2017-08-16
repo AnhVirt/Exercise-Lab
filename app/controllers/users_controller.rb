@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :profile, only: [:show]
+  before_action :profile, only: [:show,:friends]
   def sign_up
     
   	@account=Account.new
@@ -17,8 +17,8 @@ class UsersController < ApplicationController
   end
   def show
 
-    @articles= @profile.articles
-    
+    @articles= Article.includes([:account,:comments,:photos]).where(:account_id=> @profile).paginate(page: params[:page],per_page: 10)
+
   end
 
   def upload_avatar
@@ -52,17 +52,13 @@ class UsersController < ApplicationController
 
   def create
   	@account = Account.new(account_params)
-   if @account.password==@account.password_comfirmation
+  
       if @account.save
 	     redirect_to :sign_in
       else
 
         render 'sign_up'
       end
-    else
-      @account.errors[:Repassword]=" is not same"
-      render 'sign_up'
-   end
 
   end
   def account_params
@@ -70,7 +66,9 @@ class UsersController < ApplicationController
   end
 
 
-
+  def friends
+    @friends = @profile.friends
+  end
 
   private
   def profile

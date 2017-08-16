@@ -5,6 +5,7 @@
 @import "article.scss";
 @import "home.scss";
 @import "comment.scss";
+@import "materialize";
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
 
 body{
@@ -22,7 +23,13 @@ nav.header{
 	}
 	
 	}
-		
+	table{
+		.table{
+	display:block !important;
+	overflow-x: auto !important;
+}	
+	}
+	
 
 	
 

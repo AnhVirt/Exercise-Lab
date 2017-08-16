@@ -1,22 +1,59 @@
 
 <div class="card">
-    <div class="card-wall">
-        <img src=<%="#{@profile.wallpaper.url}"%>  class="wallpaper">
-    </div>
-    <div class="card-header">
-        <%=image_tag(@profile.avatar.url,class:"avatar")%>
-        <h3><%="#{@profile.first_name+@profile.last_name}"%></h3>
-        <p class="title"><%="#{@profile.first_name+@profile.last_name}"%></p>
-        <p>Harvard University</p>
-        <a href="#"><i class="fa fa-dribbble"></i></a> 
-        <a href="#"><i class="fa fa-twitter"></i></a> 
-        <a href="#"><i class="fa fa-linkedin"></i></a> 
-        <a href="#"><i class="fa fa-facebook"></i></a> 
-        <div class="btn-group">
-        <button type="button" class="btn btn-primary">Chat</button>
-        <button type="button" class="btn btn-default"><%= link_to "Add Friend",user_relationships_path(@profile.id), method: :post%> </button>
-      
-    </div>
+	<div class="card-wall">
+		<img src=<%="#{@profile.wallpaper.url}"%>  class="wallpaper">
+	</div>
+	<div class="card-header">
+		<%=image_tag(@profile.avatar.url,class:"avatar")%>
+		<h3><%="#{@profile.first_name+@profile.last_name}"%></h3>
+		<p class="title"><%="#{@profile.first_name+@profile.last_name}"%></p>
+		<p>Harvard University</p>
+		<a href="#"><i class="fa fa-dribbble"></i></a> 
+		<a href="#"><i class="fa fa-twitter"></i></a> 
+		<a href="#"><i class="fa fa-linkedin"></i></a> 
+		<a href="#"><i class="fa fa-facebook"></i></a> 
+		<div class="btn-group">
+		<button type="button" class="btn btn-primary">Chat</button>
+		<button type="button" class="btn btn-default" id="add-friend" > Add Friend </button>
+	  
+	</div>
   </div>
 </div>
-    
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#add-friend').click(function(){
+			console.log(1);
+				$.ajax({
+
+					url: "<%=friendships_path(:followed => @profile)%>",
+					type: "POST",
+					dataType: "json",
+					success: function(result){
+						if (result.status == "success"){
+							Materialize.toast('success', 4000);
+							$('#add-friend').remove();
+							// document.getElementById("add-friend").remove();
+							// $('')
+						}
+						else{
+							Materialize.toast('failed', 4000);
+							var text = $("#add-friend").text();
+							$('#add-friend').text(text.replace('Add Friend','Friend'));
+
+							// console.log($('#add-friend').text());
+							$('#add-friend').attr("id","delete-friend");
+
+							// document.getElementById("add-friend").innerHTML = "Hello World";
+							
+						}
+					},
+			    error: function(xhr, textStatus, errorThrown){
+			       alert('request failed');
+			    }
+
+					
+				})
+				})
+		});
+
+</script>
