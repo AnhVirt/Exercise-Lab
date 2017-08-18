@@ -9,9 +9,9 @@ class Account < ApplicationRecord
 	validates :password, presence: true , length: { in: 6..20}
 	validates_confirmation_of :password
 	
-  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/missing.jpg"
+  has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "http://i.imgur.com/oDXDKXd.jpg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
-	has_attached_file :wallpaper, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/missing.jpg"
+	has_attached_file :wallpaper, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "http://i.imgur.com/AAPJNmU.jpg"
   validates_attachment_content_type :wallpaper, content_type: /\Aimage\/.*\z/
 	
 	has_many :articles,:dependent => :destroy
