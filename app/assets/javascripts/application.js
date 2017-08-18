@@ -37,7 +37,7 @@ toastr.options = {
   "showMethod": "slideDown",
   "hideMethod": "slideUp"
 }
-toastr[status](message,title)
 
+toastr[status](message,title)
 
 }
