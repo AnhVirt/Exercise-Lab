@@ -2,7 +2,7 @@ class FriendshipsController < ApplicationController
 	before_action :set_friend
 	def create
 
-		if Friendship.where("followed_id = ? AND follower_id=? OR follower_id = ? AND followed_id  = ? AND status = 'pending'",current_account.id,@friend.id,current_account,@friend.id).blank? && @friend != current_account
+		if Friendship.where("followed_id = ? AND follower_id=? OR follower_id = ? AND followed_id  = ? AND status = 0",current_account.id,@friend.id,current_account,@friend.id).blank? && @friend != current_account
 			current_account.add_friends.create( :followed => @friend	)
 			render :json => {:status=>'success'}
 		else

@@ -30,7 +30,7 @@
 					dataType: "json",
 					success: function(result){
 						if (result.status == "success"){
-							Toast();
+							Toast("success","asd","asd");
 							toastr.success('','asd');
 
 
@@ -40,9 +40,8 @@
 							// $('')
 						}
 						else{
-							toastr.options.closeHtml = '_';
+							// toastr.options.closeHtml = '_';
 							toastr.info('<a href="https://www.google.com.vn">Google</a>', 'Button spree');
-							Toast();
 							// toastr.options.closeButton = true;
 							
 						 	// toastr.options.closeHtml = '<button><i class="icon-off"></i></button>';
