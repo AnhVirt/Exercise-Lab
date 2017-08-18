@@ -1,2 +1,11 @@
-$('#article_content').val("");
-$('#articles').prepend('<%= j render(@article) %>');
+<% if @article.errors.any? %>
+		Toast("error","Content not null","ERROR");
+	<%else%>
+		$('#edit-form').remove();
+		$("div[id^='article_']").show();
+		$('#article_content').val("");
+		$('#create_article').attr('disabled', 'disabled');
+		Toast("success","Article was created","SUCCESS");
+		$('#articles').prepend('<%= j render(@article) %>');
+		
+<%end %>

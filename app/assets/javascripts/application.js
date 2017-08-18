@@ -14,6 +14,30 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-
+//= require cocoon
 //= require bootstrap-sprockets
-//= require materialize-sprockets
+
+//= require toastr
+function Toast(status,message,title){
+
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": false,
+  "positionClass": "toast-bottom-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "1000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "slideDown",
+  "hideMethod": "slideUp"
+}
+toastr[status](message,title)
+
+
+}

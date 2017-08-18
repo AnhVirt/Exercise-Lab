@@ -1,21 +1,18 @@
 class CommentsController < ApplicationController
 	def new
-			@comment= Comment.all
-			@newcomment=Comment.new
+			@comment=Comment.new
 	end
 	def create
-
-		@newcomment = Comment.new(params_comment)
-		if @newcomment.save
-			if params[:comment][:photo]
-
-				@newcomment.create_photo(:image=>params[:comment][:photo])
-
+		@comment = Comment.new(params_comment)
+		if @comment.save
+			respond_to do |format|
+				format.js
 			end
-			
-			redirect_to :back
 		else
-			redirect_to :back
+			respond_to do |format|
+				format.js
+			end
+
 
 		end
 	end
@@ -34,20 +31,22 @@ class CommentsController < ApplicationController
 			@comment=Comment.find(params[:id])
 	end
 	def destroy
-		Comment.all.find(params[:id]).delete
-		redirect_to :back
+		Comment.find(params[:id]).delete
+		respond_to do |format|
+			format.js
+		end
 		
 	end
 
 	private
 
 	def params_comment
-		pa=params.require(:comment).permit(:content)	
+		pa = params.require(:comment).permit(:content)	
 		pa[:article_id]= params[:article_id]
-	
+		
 		pa[:account_id]= current_account.id
 
 		return pa
-			end
+	end
 
 end

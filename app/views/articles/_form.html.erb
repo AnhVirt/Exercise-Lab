@@ -2,12 +2,35 @@
 	<% if logged_in? %>
 		<%= form_for @article,:html => { :class => 'form-horizontal', multipart: true },:authenticity_token => true,
 		remote: true  do |f| %>
-  		<%= f.text_area  :content ,class:"form-control",placeholder:"Hôm này em đang làm gì?", :rows=>"5" %>
-			<%= f.fields_for  :pictures do |builder| %>
-				<%= f.label  :pictures, :class => 'control-label' %>
-				<%= f.file_field  :images, multiple: true %>
-				<%end%>
-  		<%= f.submit " Dang bai viet", class:'btn btn-default' %>
+  		<%= f.text_area  :content ,class:"form-control",placeholder:"Hôm này em đang làm gì?", :rows=>"2" %>
+			<div class="images">
+        <%= f.simple_fields_for :photos do |image| %>
+          <%= render 'photo_fields', f: image  %>
+        <% end %>
+        <div class="links">
+          <%= link_to_add_association "Add image", f, :photos, class: "btn" %>
+        </div>
+       </div>
+  		<%= f.submit " Dang bai viet", class:'btn btn-default',disabled:"disabled",id:"create_article" %>
 		<% end %>		
 	<%end%>		
 </div>
+<script>
+$(document).ready(
+  function() {
+    $('#article_content').keyup(function() {
+        var empty = false;
+        $('#article_content').each(function() {
+            if ($(this).val() == '') {
+                empty = true;
+            }
+        });
+
+        if (empty) {
+            $('#create_article').attr('disabled', 'disabled');
+        } else {
+            $('#create_article').removeAttr('disabled');
+        }
+    });
+})
+</script>

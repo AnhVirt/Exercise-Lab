@@ -1,0 +1,7 @@
+<% if @comment.errors.any? %>
+		Toast("error","comment not null","ERROR");
+	<%else%>
+		Toast("success","comment was created","SUCCESS");
+		$('#comment_content').val('');
+		$('#comments_article_<%=@comment.article_id%>').prepend("<%=j render (@comment)%>")
+<%end%>

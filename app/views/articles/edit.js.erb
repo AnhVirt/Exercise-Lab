@@ -1,0 +1,3 @@
+$('#edit-form').remove();
+$("div[id^='article_']").show();
+$('#article_<%=params[:id]%>').hide().after("<%= j render 'form_edit'%>");

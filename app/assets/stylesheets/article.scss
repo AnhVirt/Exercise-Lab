@@ -50,3 +50,12 @@
 			}
 	
 }
+#form{
+	position: relative;
+	.spinner{
+		position: absolute;
+		img{
+			width: 50px;
+		}
+	}
+}

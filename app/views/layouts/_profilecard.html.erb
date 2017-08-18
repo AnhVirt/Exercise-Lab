@@ -30,13 +30,26 @@
 					dataType: "json",
 					success: function(result){
 						if (result.status == "success"){
-							Materialize.toast('success', 4000);
+							Toast();
+							toastr.success('','asd');
+
+
+							// toastr.success('Have fun storming the castle!', 'Miracle Max Says')
 							$('#add-friend').remove();
 							// document.getElementById("add-friend").remove();
 							// $('')
 						}
 						else{
-							Materialize.toast('failed', 4000);
+							toastr.options.closeHtml = '_';
+							toastr.info('<a href="https://www.google.com.vn">Google</a>', 'Button spree');
+							Toast();
+							// toastr.options.closeButton = true;
+							
+						 	// toastr.options.closeHtml = '<button><i class="icon-off"></i></button>';
+							// toastr.error('Nofitication', 'Da gui loi moi');
+
+
+							// toastr.error('Have fun storming the castle!', 'Miracle Max Says')
 							var text = $("#add-friend").text();
 							$('#add-friend').text(text.replace('Add Friend','Friend'));
 
