@@ -10,10 +10,11 @@ class ArticlesController < ApplicationController
 	end
 	def show_comments
 		@article=Article.find(params[:id])
-		@account=@article.account
+		# @account=@article.account
 		@comments = @article.comments
 		@comment = Comment.new
 		respond_to do |format|
+			format.html {redirect_to articles_path}
 			format.js
 		end
 	end
@@ -32,7 +33,7 @@ class ArticlesController < ApplicationController
 			respond_to  do |format|
 		if @article.save	
 				format.html{ redirect_to articles_path}
-				format.js
+				format.js 
 
 		else
 			
@@ -42,18 +43,14 @@ class ArticlesController < ApplicationController
 	end
 	def update
 		@article=Article.find(params[:id])
-			if @article.update(article_params)
-				respond_to do |format|
-					# format.json { render @article}
-					format.json{ render json: @article}
-					format.js
-				end
-				else
-					render :edit
-			end
+		@article.update_attributes!(article_params)
+		respond_to do |format|
+			format.js
+			format.html {redirect_to articles_path}
+		end	
 
 	end
-
+	
 	def index
 		@article= Article.new
 		@article.photos.build

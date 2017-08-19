@@ -1,1 +1,4 @@
-$('#edit-form').hide().after("render @article")
+
+$('#edit-form').remove();
+alert("23;");
+$('#article_<%=@article.id%>').child('.post-body');
