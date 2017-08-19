@@ -17,5 +17,5 @@ class FriendshipsController < ApplicationController
 		def set_friend
 			@friend = Account.find(params[:followed])
 			
-		endừng
+		end
 end
