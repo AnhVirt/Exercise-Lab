@@ -4,7 +4,7 @@
 				<div class="post-header">
 					<div class="form-horizontal">
 						<div class="post-header-left">
-							<%=link_to "#{ article.account.first_name}", user_path(id:article.account.id) %>
+							<%=link_to "#{ article.account.first_name}", account_path(username:article.account.username) %>
 							<p id="datepost">Post on <%= article.created_at %></p>
 							<p style="right"></p>
 						</div>
@@ -30,7 +30,7 @@
 				<%end%>
 			</div>
 			<div class="post-footer">
-		  	<p> <span class="label label-info"><%= article.comments.count %></span><%= link_to 'Comments',articles_show_comments_path(id:article.id),remote: true %></p>
+		  	<p> <span class="label label-info"><%= article.cache_comment_count %></span><%= link_to 'Comments',articles_show_comments_path(id:article.id),remote: true %></p>
 			</div>
 		</div>
 	<%end%>

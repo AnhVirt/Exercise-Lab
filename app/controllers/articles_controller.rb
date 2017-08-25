@@ -4,7 +4,7 @@ class ArticlesController < ApplicationController
 	def show 
 		@article=Article.find(params[:id])
 		@account=@article.account
-		@comments = @article.comments
+		@comments = @article.cache_comment
 		@comment = Comment.new
 		
 	end

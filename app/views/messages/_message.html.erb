@@ -1,0 +1,10 @@
+
+	<%if message.account == current_account%>
+		<div id	="message_<%=message.id%>" class="right">
+			<p><%=message.text%></p>
+		</div>
+	<%else%>
+			<div class	="message_<%=message.id%>" class="left">
+			<p><%=message.text%></p>
+		</div>
+	<%end%>

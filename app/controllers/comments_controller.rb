@@ -20,15 +20,20 @@ class CommentsController < ApplicationController
 	end
 	def update
 		@comment=Comment.find(params[:id])
- if @comment.update(params.require(:comment).permit(:content))
-			redirect_to article_path(id:@comment.article_id)
-		else 
-			render :edit
+		respond_to do |format|
+ 			if @comment.update(params.require(:comment).permit(:content))
+ 				format.js
+			else 
+				format.js
+			end
 		end
 	end
 	def edit
-			@article = Article.find(params[:article_id])
-			@comment=Comment.find(params[:id])
+		@article = Article.find(params[:article_id])
+		@comment=Comment.find(params[:id])
+		respond_to do |format|
+			format.js
+		end
 	end
 	def destroy
 		Comment.find(params[:id]).delete

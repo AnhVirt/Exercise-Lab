@@ -1,0 +1,16 @@
+<div class="container wrapper">
+
+		<div class="row">
+
+		<div class="col-md-2 col-md-offset-0 col-xs-12 col-sm-4 col-sm-offset-4 ">
+
+		<%=render partial:'layouts/profilecard',locals: {account: @account} %>
+		</div>
+
+		</div>
+		<%= will_paginate @articles%>
+		<div class="row">
+			<%= render 'articles/articles'%>
+		</div>
+
+	</div>

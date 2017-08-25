@@ -4,7 +4,7 @@
 		remote: true  do |f| %>
   		<%= f.text_area  :content ,class:"form-control",placeholder:"Hôm này em đang làm gì?", :rows=>"2" %>
 			<div class="images">
-        <%= f.simple_fields_for :photos do |image| %>
+        <%= f.simple_fields_for :photos,remote: true do |image| %>
           <%= render 'photo_fields', f: image  %>
         <% end %>
         <div class="links">

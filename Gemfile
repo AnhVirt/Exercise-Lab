@@ -14,14 +14,14 @@ gem 'mysql2', '>= 0.3.18', '< 0.5'
 group :production do
   gem 'pg'
 end
-gem 'materialize-sass'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 gem "cocoon"
 # toastr nofications
 gem 'toastr-rails'
-
-
+gem 'bootstrap-chosen-rails'
+gem 'chosen-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views

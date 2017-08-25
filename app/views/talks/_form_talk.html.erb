@@ -1,0 +1,5 @@
+<%= simple_form_for @talk do |f|%>
+	<%=f.input :name,class: "form-horizontal"%>
+	 <%= f.collection_select :account_ids, current_account.friends, :id, :first_name, {}, {multiple: true} %>
+	<%= f.submit "Tao",class: "btn btn-info"%>
+<%end%>

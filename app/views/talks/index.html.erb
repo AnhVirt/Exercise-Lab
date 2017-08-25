@@ -1,0 +1,8 @@
+ <div class="container-message">
+ 	<div class="talks">
+ 		<% @talks.each do |talk|%>
+ 			<%= link_to talk.name,talk_path(talk)%>
+ 		<%end%>
+ 		<%=render 'form_talk'%>
+ 	</div>
+ </div>

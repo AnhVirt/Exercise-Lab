@@ -1,0 +1,39 @@
+// Place all the styles related to the messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.container-message{
+	width: 300px;
+	margin: auto;
+	padding-top: 100px;
+.message{
+		
+	width:300px;
+	height: 400px;
+	border: 1px solid darkgray;
+	background-color: white;
+	
+	overflow-y: scroll;
+	
+	[id^=message_]{
+		max-width: 120px;
+		word-break: break-word;
+		border-radius: 10px;
+		padding: 2px;
+		margin: 2px;
+	}
+	.left{
+		float: left;
+		background-color: red;
+		clear: both;
+
+	}
+	.right{
+		float: right;
+		background-color: lightblue;
+		clear: both;
+	}
+	#new_message{
+		
+	}
+}
+}

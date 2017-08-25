@@ -3,7 +3,7 @@
 		<div class="post-header">
 			<div class="form-horizontal">
 				<div class="post-header-left">
-					<%=link_to "#{ @article.account.first_name}", users_path(account_id:@article.account_id) %>
+					<%=link_to "#{ @article.account.first_name}", account_path(username:@article.account.username) %>
 					<p id="datepost">Post on <%= @article.created_at%></p>
 					<p style="right"></p>
 				</div>
@@ -13,7 +13,7 @@
 			</div>
 		</div>
 	<div class="post-body"> 
-	 	<%= form_for @article do |f| %>
+	 	<%= form_for @article,remote: true do |f| %>
 	 		<%= f.text_area :content ,class:"form-control input-lg",style:'border:none; min-width: 100%;' %>
 			<div class="post-footer">
 				<div class="btn-group">

@@ -1,5 +1,9 @@
 <%= simple_form_for [@article,@comment],authenticity_token: true ,remote: true do |comment|%>
-<%= comment.input :content, input_html: { minlength: 1 }%>
+	<%= comment.input :content, input_html: { minlength: 1 }%>
 
-<%= comment.button :submit ,"Them comment"%>
+	<% if @comment.new_record?%>
+		<%= comment.button :submit ,"Them comment"%>
+	<%else%>
+		<%= comment.button :submit,"Chinh sua"%>
+	<%end%>
 <%end%>

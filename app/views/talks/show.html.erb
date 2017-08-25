@@ -1,0 +1,11 @@
+<div class="container-message dropdown">
+	 <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Room <%=@talk.name%>
+    <span class="caret"></span></button>
+  <div class="dropdown-menu">
+  	<div class="message">
+			<%=render 'messages/messages'%>
+  	</div>
+
+		<%= render 'messages/messages_form' %>
+	</div>
+</div>

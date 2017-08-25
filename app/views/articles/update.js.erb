@@ -1,4 +1,5 @@
 
-$('#edit-form').remove();
-alert("23;");
-$('#article_<%=@article.id%>').child('.post-body');
+$('#article_<%=@article.id%>').remove();
+$('#edit-form').hide().after("<%= j render 'articles/article' %>");
+
+// $('#article_<%=@article.id%>').children('.post-body').val("<%=@article.content%>");

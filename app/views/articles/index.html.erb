@@ -1,15 +1,18 @@
 <div class="container wrapper">
-		
-	<div class="row" id= "form">
+	<div class="row">
 
-	<div class="spinner"><img src="http://gifimage.net/wp-content/uploads/2017/08/loading-gif-transparent-4.gif"></div>
-		<%=render 'form'%>
+		<div class="row" id= "form">
 
-	</div>
+		<div class="spinner"><img src="http://gifimage.net/wp-content/uploads/2017/08/loading-gif-transparent-4.gif"></div>
+			<%=render 'form'%>
 
-	<div class="row" id="articles">
-		<%=render 'articles'%>	
-		
+		</div>
+
+		<div class="row" id="articles">
+			<%=render 'articles'%>	
+			
+		</div>
+		<%= render 'chat'%>
 	</div>
 </div>
 <script type="text/javascript">

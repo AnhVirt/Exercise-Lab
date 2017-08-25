@@ -12,12 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 //= require cocoon
 //= require bootstrap-sprockets
-
 //= require toastr
+//= require chosen-jquery
+//= require messages
 function Toast(status,message,title){
 
 toastr.options = {

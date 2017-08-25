@@ -1,17 +1,28 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "users.scss";
+@import "chosen";
+@import "bootstrap-chosen";
+@import "accounts.scss";
 @import "sessions.scss";
 @import "article.scss";
 @import "home.scss";
 @import "comment.scss";
 @import "toastr";
-
+@import "talks.scss";
+@import "messages.scss";
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
 
 body{
 	font-family: 'Roboto Slab', serif;
 }
+label{
+	font-size: 85% !important;
+}
+.field_with_errors .control-label{
+	background-color:red ;
+	color:white ;
+}
+
 nav.header{
 	border-bottom: 1px solid #BBBBBB;
 	background-color: white;
@@ -41,3 +52,8 @@ ul {
 body{
 	background-color:#EEEEEE;
 }
+section.content{
+	font-size:20px;
+	height:30px;
+}
+

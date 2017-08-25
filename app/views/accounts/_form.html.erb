@@ -1,0 +1,57 @@
+<div class="container sign_up">
+	<div class="row">
+		<div class="header">
+			<h1>EDIT</h1>	
+		</div>
+	</div>
+<div class="row">
+		<div class="sign-up-form col-md-6 col-md-offset-3 col-xs-4 col-xs-offset-4 col-xs-12 ">
+		
+		<% if @account.errors.any? %>
+			
+		<% end %>
+
+		<%= form_for @account ,class:"form-horizontal" do |f| %>
+			<div class="form-group">
+				<%=f.label :first_name , class: "label label-primary control-label"%>
+				<%= f.text_field :first_name ,class: "form-control",placeholder: "First Name"%>
+			</div>
+			<div class="form-group">
+				<%=f.label :last_name, class: "label label-primary control-label"%>
+				<%= f.text_field :last_name ,class: "form-control",placeholder: "Last Name" %>
+			
+			</div>
+			<% if !@account.new_record? %>
+			<div class="form-group">
+			<%= f.label :username,class: "label label-primary control-label"%>
+			<%= f.text_field :username, class: "form-control",placeholder: "User name"%>
+			</div>
+			<%end%>
+			<% if @account.new_record? %>
+			<div class="form-group">
+				<%= f.label :email , class: "label label-primary control-label"%>
+				<%= f.text_field :email ,class: "form-control",placeholder:"Email" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :password , class: "label label-primary control-label"%>
+				<%= f.password_field :password , class: "form-control",placeholder:"Password"%>
+			
+			</div>
+			<div class="form-group">
+				<%= f.label :password_confirmation , class: "label label-primary control-label"%>
+				<%=f.password_field :password_confirmation ,class: "form-control",placeholder:"Repassword"%>
+			</div>
+			<%end%>
+			<div class="center">
+			<%if @account.new_record? %>
+				<%= f.submit 'Sign up', class: "btn btn-primary"  %><br>
+				<label>Already account? <%= link_to "Sign in" ,sign_in_path %></label>
+			<%else%>
+				<%= f.submit 'Update', class: "btn btn-primary"  %>
+			<%end%>
+				
+			</div>
+		<% end %>
+		
+		</div>
+</div>

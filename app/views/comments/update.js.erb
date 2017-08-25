@@ -1,0 +1,2 @@
+$('#comment_<%=@comment.id%>').remove();
+$('#edit_comment_<%=@comment.id%>').hide().after('<%= j render @comment%>');

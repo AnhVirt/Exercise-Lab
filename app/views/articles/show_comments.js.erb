@@ -1,3 +1,3 @@
 
-$('#article_<%=params[:id]%>').append('<%= j render "comments/form"%>');
-$('#article_<%=params[:id]%>').append('<%= j render "comments/comments" %>');
+$('<%= j render "comments/form"%>').hide().appendTo('#article_<%=params[:id]%>').slideDown(300);
+$('<%= j render "comments/comments" %>').hide().appendTo('#article_<%=params[:id]%>').slideDown(300);

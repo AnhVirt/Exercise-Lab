@@ -1,5 +1,0 @@
-<div class="container" style="margin-top: 50px;">
-	<% @friends.each do |friend| %>
-		<p> <%= "#{friend.first_name} #{friend.last_name}"%> <%= link_to "Add friend",friendships_path(followed: friend) ,method: :post%></p>
-	<%end%>
-</div>

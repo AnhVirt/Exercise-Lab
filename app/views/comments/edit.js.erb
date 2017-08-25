@@ -1,0 +1,2 @@
+
+$('#comments_article_<%=@article.id%>').children('#comment_<%=@comment.id%>').hide().after("<%= j render 'comments/form'%>")

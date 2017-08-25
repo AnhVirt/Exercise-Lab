@@ -8,23 +8,15 @@
             <%end%>  
       </title>
     <%= csrf_meta_tags %>
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" type="text/javascript" charset="utf-8" async defer></script>
+  
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-  <%= render 'layouts/header' %>
-  		 <section class="content" style="min-height: auto;">
-      <% flash.each do |key, value| %>
-        <div class="row">
-          <div class="alert alert-<%= key %>">
-            <%= value %>
-          </div>
-        </div>
-      <% end %>
-    </section>
-  		    <%= yield %>
+    <% if params[:action] != "sign_up" && params[:action] !='sign_in' %>
+      <%= render 'layouts/header' %>
+    <%end%>
+  	<%= yield %>
   </body>
 </html>

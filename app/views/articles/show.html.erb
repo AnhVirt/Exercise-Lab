@@ -4,7 +4,7 @@
 
 
 	<div class="media-body">
-		<h4 class="media-heading"><%= link_to "#{@account.first_name+" " + @account.last_name}",user_path(id:@account.id)%> <small><i>Posted on
+		<h4 class="media-heading"><%= link_to "#{@account.first_name+" " + @account.last_name}",account_path(username:@account.username)%> <small><i>Posted on
 		<%= @article.created_at %> 
 		</i></small></h4> 
 		<p><%= @article.content %></p>

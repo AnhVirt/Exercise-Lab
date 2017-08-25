@@ -1,0 +1,6 @@
+<% if @message.errors.any?%>
+Toast("error","loi","loi");
+<%else%>
+$('#message_text').val("");
+$('.message').append('<%= j render @message %>')
+<%end%>
