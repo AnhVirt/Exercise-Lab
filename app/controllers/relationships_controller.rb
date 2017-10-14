@@ -12,7 +12,7 @@ class RelationshipsController < ApplicationController
 	private
 
 	def request_params
-			@followed = Account.find(params[:user_id])
-			@follower = current_account
+			@followed = user.find(params[:user_id])
+			@follower = current_user
 	end
 end

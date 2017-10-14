@@ -1,0 +1,8 @@
+<div class="container-message row">
+<% @users.each do |user|%>
+	<div class= "user col-md-2" id="user_<%=user.id%>">
+	<%=render partial:'layouts/profilecard',locals: {user: user}%>
+	<%=link_to user.name,friendships_path(followed: user.id),method: :post,remote: true%>
+	</div>
+<%end%>
+</div>

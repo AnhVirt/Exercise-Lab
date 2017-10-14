@@ -1,5 +1,5 @@
 module HomeHelper
-	def account_id (id)
-		Account.find_by(id: id).first_name
+	def user_id (id)
+		user.find_by(id: id).name
 	end
 end

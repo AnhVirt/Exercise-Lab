@@ -2,8 +2,8 @@
 
 one:
   content: MyString
-  account_id: MyString
+  user_id: MyString
 
 two:
   content: MyString
-  account_id: MyString
+  user_id: MyString

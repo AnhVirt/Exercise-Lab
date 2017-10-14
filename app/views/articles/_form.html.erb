@@ -1,5 +1,5 @@
 <div class="col-md-6 col-md-offset-3  form-group">	
-	<% if logged_in? %>
+	<% if  user_signed_in? %>
 		<%= form_for @article,:html => { :class => 'form-horizontal', multipart: true },:authenticity_token => true,
 		remote: true  do |f| %>
   		<%= f.text_area  :content ,class:"form-control",placeholder:"Hôm này em đang làm gì?", :rows=>"2" %>

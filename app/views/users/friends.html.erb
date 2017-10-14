@@ -1,0 +1,21 @@
+<div class="container-message">
+<div class="row">
+	<div class="col-md-6 friend">
+
+		<% @friends.each do |friend|%>
+			<div id="friend_<%=friend.id%>">
+			<%=link_to friend.name,user_path(user_name: friend.user_name)%>
+			</div>
+		<%end%>
+	</div>
+	<div class="col-md-6 wait_friend">
+		<% @wait_friends.each do |wait_friend|%>
+			<div id="friend_<%=wait_friend.id%>">
+			<%=link_to wait_friend.name,user_path(user_name: wait_friend.user_name)%>
+			<%=link_to "Accept",friendship_path(Friendship.find_by("follower_id = ? AND  followed_id = ? OR follower_id = ? AND followed_id = ?",current_user,wait_friend.id,current_user,wait_friend)),method: :patch,remote: true%>
+			</div>
+		<%end%>
+	</div>
+
+</div>
+</div>

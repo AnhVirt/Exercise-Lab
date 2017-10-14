@@ -1,29 +1,16 @@
 Rails.application.routes.draw do
   
-#SIGN UP accountsController
-
-  # get  '/article/:article_id/comment', to: 'comment#new', as: 'comment'
-  # post '/article/:article_id/comment', to: 'comment#create', as:'newcomment'
-
-#SessionsController
-  
-  get   'sign_in',   to: 'sessions#new'
-  post  'sign_in', to: 'sessions#create'
-  delete 'sign_out', to: 'sessions#destroy'
-  patch 'accounts/:id/upload_avatar', to: "accounts#upload_avatar", as: "accounts/upload_avatar"
-  patch 'accounts/:id/upload_wallpaper', to: "accounts#upload_wallpaper", as: "accounts/upload_wallpaper"
-
-  resources :friendships,only:[:create,:update,:destroy,:edit]
-  resources :accounts,param: :username do
-     
-    member do 
-      get :friends
-    end
-    resources :photos, only: [:new, :create, :show, :destroy]
+ 
+  devise_scope :user do
+    devise_for :users ,path_names: {
+      sign_in: 'login',sign_out:'logout',
+      sign_up: 'sign_up'
+    }
+    resources :users 
+    get 'users/:id/friends',to:'users#friends',as:'friends'
   end
-  get 'sign_up', to:'accounts#sign_up'
-  post 'sign_up', to: 'accounts#create'
-  
+ 
+  resources :friendships,only:[:create,:update,:destroy,:edit]
   resources :articles do
     resources :comments 
   end

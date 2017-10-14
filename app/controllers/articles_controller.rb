@@ -3,14 +3,14 @@ class ArticlesController < ApplicationController
 	end
 	def show 
 		@article=Article.find(params[:id])
-		@account=@article.account
+		@user=@article.user
 		@comments = @article.cache_comment
 		@comment = Comment.new
 		
 	end
 	def show_comments
 		@article=Article.find(params[:id])
-		# @account=@article.account
+		# @user=@article.user
 		@comments = @article.comments
 		@comment = Comment.new
 		respond_to do |format|
@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
 	end
 	def create
 		@article= Article.new(article_params)
-		@article.account=current_account
+		@article.user=current_user
 		
 			respond_to  do |format|
 		if @article.save	
@@ -54,7 +54,7 @@ class ArticlesController < ApplicationController
 	def index
 		@article= Article.new
 		@article.photos.build
-		@articles = Article.includes(:comments,:photos,:account)
+		@articles = Article.includes(:comments,:photos,:user)
 	end
 	def destroy
 		Article.find(params[:id]).delete

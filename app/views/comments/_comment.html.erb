@@ -1,6 +1,6 @@
 <div class="xl" id= "comment_<%=@comment.id%>">
     <div class="comments-body">
-       <h4 class="comments-heading"><%= link_to "#{@comment.account.first_name+ " "+ @comment.account.last_name }",account_path(username:@comment.account.username)%> </h4>
+       <h4 class="comments-heading"><%= link_to "#{@comment.user.name+ " "+ @comment.user.name }",user_path(@comment.user)%> </h4>
         <small><i><%= "Post on #{@comment.created_at} "%></i></small>
         <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

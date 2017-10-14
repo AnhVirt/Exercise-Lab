@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 	def new
-		if logged_in?
+		if user_signed_in?
 			redirect_to root_path
 		else
 
@@ -9,9 +9,9 @@ class SessionsController < ApplicationController
 	end
 	
 	def create
-		account= Account.find_by(email: params[:session][:email].downcase)
-		if account && account.authenticate(params[:session][:password])
-			log_in(account)
+		user= User.find_by(email: params[:session][:email].downcase)
+		if user && user.authenticate(params[:session][:password])
+			log_in(user)
 			redirect_to root_path
 		else
 			flash[:danger]="Incorrect email or password"

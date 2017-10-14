@@ -18,6 +18,8 @@
 //= require toastr
 //= require chosen-jquery
 //= require messages
+//= require jquery.purr
+//= require best_in_place
 function Toast(status,message,title){
 
 toastr.options = {

@@ -1,12 +1,14 @@
 
 <div class="card">
 	<div class="card-wall">
-		<img src=<%="#{account.wallpaper.url}"%>  class="wallpaper">
+		<img src=<%="#{user.wallpaper.url}"%>  class="wallpaper">
 	</div>
 	<div class="card-header">
-		<%=image_tag(account.avatar.url,class:"avatar")%>
-		<h3><%="#{account.first_name+account.last_name}"%></h3>
-		<p class="title"><%="#{account.first_name+account.last_name}"%></p>
+		<%=image_tag(user.avatar.url,class:"avatar")%>
+		<h3><%="#{user.name+user.name}"%></h3>
+		<%= best_in_place user,:name,type: :input%>
+		<%= best_in_place user,:name,type: :input%>
+		<p class="title"><%="#{user.name+user.name}"%></p>
 		<p>Harvard University</p>
 		<a href="#"><i class="fa fa-dribbble"></i></a> 
 		<a href="#"><i class="fa fa-twitter"></i></a> 
@@ -14,7 +16,7 @@
 		<a href="#"><i class="fa fa-facebook"></i></a> 
 		<div class="btn-group">
 		<button type="button" class="btn btn-primary">Chat</button>
-		<%= link_to "Add friend",friendships_path(followed: account.id),method: :post,remote: true, type:"button", class:"btn btn-default", id:"add-friend" %>
+		<%= link_to "Add friend",friendships_path(followed: user.id),method: :post,remote: true, type:"button", class:"btn btn-default", id:"add-friend" %>
 	  
 	</div>
   </div>

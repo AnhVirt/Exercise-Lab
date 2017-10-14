@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
 	def create
 		@message = Message.new(message_params)
-		@message.account = current_account
+		@message.user = current_user
 		respond_to do |format|
 			if @message.save
 			

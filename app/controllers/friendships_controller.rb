@@ -3,8 +3,8 @@ class FriendshipsController < ApplicationController
 	def create
 
 		respond_to do |format|
-			if Friendship.where("followed_id = ? AND follower_id=? OR follower_id = ? AND followed_id  = ?",current_account.id,@friend.id,current_account,@friend.id).blank? && @friend != current_account
-				current_account.add_friends.create( :followed => @friend	)
+			if Friendship.where("followed_id = ? AND follower_id=? OR follower_id = ? AND followed_id  = ?",current_user.id,@friend.id,current_user,@friend.id).blank? && @friend != current_user
+				current_user.add_friends.create( :followed => @friend	)
 				format.js
 				format.json   {render json:{:status=>'success'}}
 			else
@@ -28,7 +28,7 @@ class FriendshipsController < ApplicationController
 	end
 	private
 		def set_friend
-			@friend = Account.find(params[:followed])
+			@friend = User.find(params[:followed])
 			
 		end
 end

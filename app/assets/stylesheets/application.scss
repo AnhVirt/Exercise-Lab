@@ -2,7 +2,7 @@
 @import "bootstrap";
 @import "chosen";
 @import "bootstrap-chosen";
-@import "accounts.scss";
+@import "users.scss";
 @import "sessions.scss";
 @import "article.scss";
 @import "home.scss";
@@ -10,6 +10,7 @@
 @import "toastr";
 @import "talks.scss";
 @import "messages.scss";
+@import "alert.scss";
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab');
 
 body{

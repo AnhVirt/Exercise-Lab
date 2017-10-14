@@ -14,9 +14,11 @@
   </head>
 
   <body>
-    <% if params[:action] != "sign_up" && params[:action] !='sign_in' %>
+   <%= query_diet_widget if Rails.env.development? %>
+   <%= query_diet_widget(:bad_count => 10, :bad_time => 2000) %>
+ 
+
       <%= render 'layouts/header' %>
-    <%end%>
   	<%= yield %>
   </body>
 </html>

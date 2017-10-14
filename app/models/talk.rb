@@ -3,5 +3,5 @@ class Talk < ApplicationRecord
 	enum status: [:normal,:block]
 	has_many :messages,dependent: :destroy
 	has_many :chaters,dependent: :destroy
-	has_many :accounts,through: :chaters
+	has_many :users,through: :chaters
 	end

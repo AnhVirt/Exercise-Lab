@@ -3,7 +3,7 @@
 		<div class="post-header">
 			<div class="form-horizontal">
 				<div class="post-header-left">
-					<%=link_to "#{ @article.account.first_name}", account_path(username:@article.account.username) %>
+					<%=link_to "#{ @article.user.name}", user_path(user_name:@article.user.user_name) %>
 					<p id="datepost">Post on <%= @article.created_at%></p>
 					<p style="right"></p>
 				</div>

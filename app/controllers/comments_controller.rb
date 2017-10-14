@@ -49,7 +49,7 @@ class CommentsController < ApplicationController
 		pa = params.require(:comment).permit(:content)	
 		pa[:article_id]= params[:article_id]
 		
-		pa[:account_id]= current_account.id
+		pa[:user_id]= current_user.id
 
 		return pa
 	end

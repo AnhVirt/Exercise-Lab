@@ -1,5 +1,27 @@
 <%= simple_form_for @talk do |f|%>
 	<%=f.input :name,class: "form-horizontal"%>
-	 <%= f.collection_select :account_ids, current_account.friends, :id, :first_name, {}, {multiple: true} %>
+	 <%= f.collection_select :user_ids, current_user.friends, :id, :name, {}, {multiple: true} %>
 	<%= f.submit "Tao",class: "btn btn-info"%>
 <%end%>
+
+<script type="text/javascript">
+	$('#talk_user_ids').change(function(){
+		var params = new Array;
+		$("select option:selected").each(function(){
+			params.push($(this).val())	
+		});
+		console.log(params);
+		$.ajax({
+			url: "<%=talks_path%>",
+			data: params,
+			method: "POST",
+			dataType: "javascript",
+			success: function(result){
+				console.log("1");
+			},
+			error: function(result){
+				console.log("2");
+			}
+		})
+	})
+</script>
